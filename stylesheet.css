@@ -1,0 +1,19 @@
+
+
+.Square{
+    height: 80px;
+    width: 80px;
+    font-size: 45px;
+    text-align: center;
+
+}
+body{
+    width: 550px;
+   margin: auto;
+   font-family: 'Poor Story', cursive;
+   background-color: rgb(212, 196, 228);
+}
+
+h1{
+    border-bottom: 1px solid red
+}
