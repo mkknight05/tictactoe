@@ -1,34 +1,53 @@
-
+let currentPlayer = "X"
+let xScoreValue = 0
+let oScoreValue = 0
+let move = 0;
 function startGame() {
-    document.turn = "X";
+    
+    currentPlayer = "X";
     document.winner = null;
-    setMessage(document.turn + " starts");
+    setMessage(currentPlayer + " starts");
 }
 
 function setMessage(msg) {
     document.getElementById("message").innerText = msg;
 }
-function nextMove(square) {
+function nextMove() {
+    let currentSquare = $(this)
     if (document.winner != null){
-        setMessage(document.turn + " Already won, You can stop now");
-    } else if (square.innerText == '') {
-        square.innerText = document.turn;
+        setMessage(currentPlayer + " Already won, You can stop now");
+    } else if (currentSquare.text() == '') {
+        currentSquare.html(currentPlayer);
+        move++;
+        if (checkForWinner(currentPlayer)) {
+            alert("Congratulations " + currentPlayer + ",  You Won!");
+            document.winner = currentPlayer;}
         switchTurn();
     } else {
         setMessage("Pick another square");
     }
 }
 function switchTurn() {
-    if (checkForWinner(document.turn)) {
-        setMessage("Congratulations " + document.turn + ",  You Won!");
-        document.winner = document.turn;
-    } else if (document.turn == "X") {
-        document.turn = "O";
-        setMessage("It's " + document.turn + " 's turn. ");
+    if (checkForWinner(currentPlayer)) {
+        setMessage("Congratulations " + currentPlayer + ",  You Won!");
+        document.winner = currentPlayer;
+        if(currentPlayer === "X"){
+            xScoreValue ++
+        }
+        else{
+            oScoreValue ++
+        }
+        updateScore()
+    } else if (currentPlayer == "X") {
+        currentPlayer = "O";
+      
+        setMessage("It's " + currentPlayer + " 's turn. ");
     } else {
-        document.turn = "X";
+        currentPlayer = "X";
+     
+
     }
-        setMessage("It's " + document.turn + "'s turn");
+        setMessage("It's " + currentPlayer + "'s turn");
 }
 function checkForWinner(move) {
     var result = false;
@@ -49,11 +68,35 @@ function checkForWinner(move) {
 
 function checkRow(a, b, c, move) {
     var result = false;
-    if (getBox(a) == move && getBox(a) == move && getBox(c) == move) {
+    if (getBox(a) == move && getBox(b) == move && getBox(c) == move) {
         result = true;
     }
     return result;
 }
 function getBox(number) {
     return document.getElementById("s" + number).innerText;
+}
+function clearBox(number){
+   $(".Square").each(function(){
+       $(this).html("")
+   })
+   startGame()
+}
+function updateScore(){
+    $("#xScore").html(xScoreValue)
+    $("#oScore").html(oScoreValue)
+}
+
+$( document ).ready(function() {
+    $(".Square").on("click", nextMove)
+    $("#restart").on("click",clearBox)
+    updateScore()
+ 
+});
+
+function checkCat (){
+    if(move===9) {
+        alert("Cats..Press Start Over")
+    }
+    checkcat();
 }

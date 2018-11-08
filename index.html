@@ -12,35 +12,46 @@
 
 
 
-<body onload= "startGame()">
+<body>
 
-    <h1> TIC TAC TOE GAME</h1>
+    <h1> TIC TAC TOE GAME </h1>
     <h2>
         <div id="message">Message here</div>
     </h2>
     <table border="1">
         <tr>
-            <td class="Square" id="s1" onclick="nextMove(this)"></td>
-            <td class="Square" id="s2" onclick="nextMove(this)"></td>
-            <td class="Square" id="s3" onclick="nextMove(this)"></td>
+            <td class="Square" id="s1"></td>
+            <td class="Square" id="s2"></td>
+            <td class="Square" id="s3"></td>
         </tr>
         <tr>
-            <td class="Square" id="s4" onclick="nextMove(this)"></td>
-            <td class="Square" id="s5" onclick="nextMove(this)"></td>
-            <td class="Square" id="s6" onclick="nextMove(this)"></td>
+            <td class="Square" id="s4" ></td>
+            <td class="Square" id="s5" ></td>
+            <td class="Square" id="s6" ></td>
         </tr>
         <tr>
-            <td class="Square" id="s7" onclick="nextMove(this)"></td>
-            <td class="Square" id="s8" onclick="nextMove(this)"></td>
-            <td class="Square" id="s9" onclick="nextMove(this)"></td>
+            <td class="Square" id="s7" ></td>
+            <td class="Square" id="s8" ></td>
+            <td class="Square" id="s9" ></td>
         </tr>
 
     </table>
 
-
-
+<button id="restart">Start Over</button>
+    <br>
+    <br>
+    <h1>Scoreboard</h1>
+    <h3>Player X: <span id="xScore"></span></h3>
+    <h3>Player O: <span id="oScore"></span></h3>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 
     <script src="script.js"></script>
+
+    
+
 </body>
 
 </html>
